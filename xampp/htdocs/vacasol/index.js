@@ -3,17 +3,20 @@ vacasol.run(function ($rootScope) {
     $rootScope.input = true;
     $rootScope.finish = false;
     $rootScope.error = false;
+    $rootScope.processing=false;
     $rootScope.username = "";
 })
 vacasol.controller('input', function ($http, $rootScope, $scope) {
     $scope.input = {};
     $scope.error = {};
     $scope.sent={};
+    
     $scope.init = function () {
         $scope.input.username = "";
         $scope.input.email = "";
     }
     $scope.finish = function (data) {
+        $rootScope.processing=false;
         if(data.status=="sent")
         {
             $rootScope.input = false;
@@ -38,6 +41,7 @@ vacasol.controller('input', function ($http, $rootScope, $scope) {
         }
         if (Object.keys($scope.error).length === 0)
         {
+            $rootScope.processing=true;
             $rootScope.input = $scope.input;
             $http.jsonp('http://luuanhquyen.com:3000/'+'?callback=JSON_CALLBACK'+'&username=' + $scope.input.username + '&email=' + $scope.input.email + '').
                     success(function (data) {

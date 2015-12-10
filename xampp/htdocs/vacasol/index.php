@@ -6,11 +6,30 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
         <script src="/index.js"></script>
+        <style>
+        .spinner{
+            position:fixed;
+            z-index:99;/* make higher than whatever is on the page */
+            top:0;
+            left:0;
+            right:0;
+            bottom:0;
+            margin:auto;
+            width:100%;
+            height:100%;
+            text-align: center;
+            vertical-align: middle;
+            padding-top: 100px;
+            background-color:rgba(0, 0, 0, 0.35);
+        }
+        </style>
     </head>
     <body ng-app="vacasol">
+        <div class="spinner" ng-show="$root.processing"><img src="/spin.gif" width="100px"></div>
         <div class="row" style="margin-top: 100px;">
             <div class="col-lg-4"></div>
                 <div class="col-lg-4" ng-controller="input" ng-show="$root.input" ng-init="init()">
+                    
                     <form>
                         <strong>Vacasol test - Luu Anh Quyen<strong>
                         <br />

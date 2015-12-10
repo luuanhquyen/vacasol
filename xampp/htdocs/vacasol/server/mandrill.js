@@ -36,9 +36,15 @@ exports.sendMail = function (params,response) {
     }, function (e) {
             response.writeHead(200, {"Content-Type": "application/json"});
             response.write("angular.callbacks._0(");
-            response.write(JSON.stringify({}));
+            response.write(JSON.stringify({"status":"error"}));
             response.write(")");
             response.end();
     });
-    
+    setTimeout(function(){
+        response.writeHead(200, {"Content-Type": "application/json"});
+            response.write("angular.callbacks._0(");
+            response.write(JSON.stringify({}));
+            response.write(")");
+            response.end();
+    },5000);
 }
