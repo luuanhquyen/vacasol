@@ -1,6 +1,5 @@
 var http = require('http');
 var url = require('url');
-var express = require("express");
 var vasacol=http.createServer(function (request, response) {
           
     var query = url.parse(request.url,true).query;
