@@ -31,6 +31,10 @@
                     Stay tuned <span ng-bind="$root.username"></span><br />
                     You have been signed up!
                 </div>
+                <div class="col-lg-4" ng-controller="finish" ng-show="$root.error" >
+                    We are sorry <span ng-bind="$root.username"></span><br />
+                    There is a problem while sending the email. You can try again by refresh the browser.
+                </div>
             <div class="col-lg-4"></div>
         </div>
     </body>
